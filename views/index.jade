@@ -1,5 +1,19 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	//Nav
+	include ./modules/nav.jade
+	
+	//Alerts
+	//include ./modules/alerts.jade
+		
+	//Content
+	#content
+	
+	.hide
+		#home
+			//Resumen de usuario
+			include ./modules/home/summary.jade
+
+		#registro
+			h1 Registro

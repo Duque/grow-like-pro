@@ -3,32 +3,48 @@
 		//Active growings panel
 		.row
 			.col-xs-6
-				h4 Active growings
+				h2 Active growings
 			.col-xs-6.text-right
 				.btn-group(role="group")
 					button.btn.btn-default(aria-label="Left Align") 
 						span.glyphicon.glyphicon-plus-sign(aria-hidden="true") 
 						| &nbsp; New grow
 .row
-	.col-xs-12
-		each cultivosActivos in [1, 2, 3, 4]
+	each cultivosActivos in [1, 2, 3, 4]
+		.col-xs-12.col-sm-6.col-md-4.col-lg-3
 			.panel.panel-primary= cultivosActivos
 				.panel-heading
-					span.badge.pull-right 42 alertas
-					span.glyphicon.glyphicon-trash(aria-hidden="true") Indoor
-					h5 Grow name
-					
+					.row
+						.col-xs-12
+							h4 White Widow november 2016
+
+						.col-xs-12
+							span.label.label-default Indoor
+							| &nbsp;
+							span.label.label-default Cutting
+							| &nbsp;
+							span.label.label-default 18 plants
+							span.badge.pull-right 2 alerts
 
 				.panel-body
-					ul.list-unstyled
-						li Indoor
-						li 10
-						li 2016/1/7
-						li.text-right
-							button.btn.btn-xs.btn-danger(aria-label="Left Align") 
+					.row
+						.col-xs-12
+							p
+								span.label.label-info Growing
+								| &nbsp;
+								span.label.label-warning Blooming
+								button.btn.btn-xs.btn-success.pull-right(aria-label="Left Align") White Widow Wiki
+							p
+								.progress
+									.progress-bar.progress-bar-info.progress-bar-striped(style="width:30%")
+									.progress-bar.progress-bar-warning.progress-bar-striped(style="width:20%")
+									span.pull-right 8 weeks &nbsp;
+
+							button.btn.btn-xs.btn-primary(aria-label="Left Align") Finalizar cultivo y archivar
+							button.btn.btn-xs.btn-danger.pull-right(aria-label="Left Align") 
 								span.glyphicon.glyphicon-trash(aria-hidden="true")
-				
-		div.text-right
+	.col-xs-12			
+		.text-right
 			button.btn.btn-info(role="button", data-toggle="collapse", href="#collapseGrowingHistory", aria-expanded="false", aria-controls="collapseGrowingHistory") Grow history
 
 .row

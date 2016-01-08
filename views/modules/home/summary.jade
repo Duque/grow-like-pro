@@ -1,0 +1,59 @@
+.row
+	.col-xs-12
+		//Active growings panel
+		.row
+			.col-xs-6
+				h4 Active growings
+			.col-xs-6.text-right
+				.btn-group(role="group")
+					button.btn.btn-default(aria-label="Left Align") 
+						span.glyphicon.glyphicon-plus-sign(aria-hidden="true") 
+						| &nbsp; New grow
+.row
+	.col-xs-12
+		each cultivosActivos in [1, 2, 3, 4]
+			.panel.panel-primary= cultivosActivos
+				.panel-heading
+					span.badge.pull-right 42 alertas
+					span.glyphicon.glyphicon-trash(aria-hidden="true") Indoor
+					h5 Grow name
+					
+
+				.panel-body
+					ul.list-unstyled
+						li Indoor
+						li 10
+						li 2016/1/7
+						li.text-right
+							button.btn.btn-xs.btn-danger(aria-label="Left Align") 
+								span.glyphicon.glyphicon-trash(aria-hidden="true")
+				
+		div.text-right
+			button.btn.btn-info(role="button", data-toggle="collapse", href="#collapseGrowingHistory", aria-expanded="false", aria-controls="collapseGrowingHistory") Grow history
+
+.row
+	.col-xs-12
+		.collapse.panel.panel-default#collapseGrowingHistory
+			.panel-heading
+				h4 Grow history
+			.panel-body
+				table.table.table-striped.table-hover
+					thead
+						tr
+							td Grow name (Go to)
+							td Type
+							td # Plants
+							td(colspan="2") Start date
+
+					tbody
+						each cultivosActivos in [1, 2, 3, 4]
+							tr= cultivosActivos
+								td
+									button.btn.btn-primary S.A.D. I 2015 &nbsp;
+
+								td Indoor
+								td 10
+								td 2016/1/7
+								td.text-right
+									button.btn.btn-xs.btn-danger(aria-label="Left Align") 
+										span.glyphicon.glyphicon-trash(aria-hidden="true")

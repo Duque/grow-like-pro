@@ -19,5 +19,5 @@ HomeEvents=_.extend(homeEvents, Backbone.Events);
 
 //See growing details
 homeEvents.bind('verCultivo', function(el){
-	alert('Vamos a ver el cultivo '+el.attr('id'));
+	//alert('Vamos a ver el cultivo '+el.attr('id'));
 });

@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-//New Grow Modal
-//.modal.fade#newGrowModal(tabindex="-1", role="dialog", aria-labelledhby="newGrowModalLabel")
-	//.modal-dialog(role="document")
-		//.modal-content
-			//.modal-header
-			//.modal-body
-			//.modal-footer
-
-//New Grow Modal
-.row
-	.modal.fade#newGrowModal(tabindex="-1", role="dialog", aria-labelledhby="newGrowModalLabel")
-		.modal-dialog(role="document")
-			.modal-content
-				.modal-header
-					|titulo
-				.modal-body
-					|titulo
-				.modal-footer
-					|footer
-=======
 //New grow
 .modal.fade#newGrowModal(tabindex="-1", role="dialog",aria-labelledby="newGrowModalLabel")
 	.modal-dialog(role="document")
@@ -30,9 +9,20 @@
 			.modal-body
 				form
 					.form-group
-						button
-							
-							
+						input.form-control#newGrowName(type="text", placeholder="Name", required)
+					.form-group
+						select.form-control(onchange="cultivoEvents.trigger('growTypeChanges', $(this).val())")
+							option(value="1") Choose a type
+							option(value="indoor") Indoor	
+							option(value="homeOutdoor") Home outdoor
+							option(value="outdoor") Outdoor 
+					.form-group#indoorZone.hide
+						p.text-info Manage your growings with species groups
+					.form-group#homeOutdoorZone.hide
+						p.text-info Manage your familiar outdoor growing
+					.form-group#outdoorZone.hide
+						p.text-info You'll see that we can make for you
+
+
 			.modal-fotter
 				| prueba de texto
->>>>>>> fd8e2876ab2b7161bf0141017371ee28f6ce7d3b

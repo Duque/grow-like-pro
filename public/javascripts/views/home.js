@@ -21,3 +21,12 @@ HomeEvents=_.extend(homeEvents, Backbone.Events);
 homeEvents.bind('verCultivo', function(el){
 	//alert('Vamos a ver el cultivo '+el.attr('id'));
 });
+
+//Open modal new Grow
+homeEvents.bind('newGrowModal', function(el){
+	$('#newGrowModal').modal();
+	$('#newGrowModal').on('shown.bs.modal', function () {
+	  $('#newGrowName').focus();
+	  nuevoCultivo = new Cultivo;
+	})	
+});

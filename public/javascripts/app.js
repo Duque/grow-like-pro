@@ -1,4 +1,4 @@
 $(document).ready(function(){
-	var vistaHome = new Home();
-	var nuevoCultivo = null; 
+	home = new Home();
+	nuevoCultivo = null; 
 });

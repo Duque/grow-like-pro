@@ -11,9 +11,6 @@ var users = require('./routes/users');
 //Dinahosting
 port = process.env.PORT || 19740;
 ip = process.env.IP || '0.0.0.0';
-
-
-
 var app = express();
 
 

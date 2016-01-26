@@ -11,18 +11,39 @@
 					.form-group
 						input.form-control#newGrowName(type="text", placeholder="Name", required)
 					.form-group
-						select.form-control(onchange="cultivoEvents.trigger('growTypeChanges', $(this).val())")
-							option(value="1") Choose a type
+						select.form-control(onchange="homeEvents.trigger('growTypeChanges', $(this).val())")
+							option(value="na") Choose a type
 							option(value="indoor") Indoor	
 							option(value="homeOutdoor") Home outdoor
 							option(value="outdoor") Outdoor 
-					.form-group#indoorZone.hide
-						p.text-info Manage your growings with species groups
-					.form-group#homeOutdoorZone.hide
-						p.text-info Manage your familiar outdoor growing
-					.form-group#outdoorZone.hide
-						p.text-info You'll see that we can make for you
+					.form-group.hide#indoorZone
+						p.text-info 
+							|Manage your growings with species groups
+						.form-group
+							.btn-group-justified(data-toggle="buttons")
+								label.btn.btn-success(onclick="homeEvents.trigger('indoorSingleSpecies')")
+									| Single species in group
+									input(type="radio",autocomplete="off",name="indoorGroupType")
 
+								label.btn.btn-success(onclick="homeEvents.trigger('outdoorSingleSpecies')")
+									| Single species in group
+									input(type="radio",autocomplete="off",name="outdoorGroupType")
+									
+						#indoorSingleSpecies.hide
+							.row
+								.col-xs-9
+									.form-group
+										input.form-control(placeholder="Genetic name")
+								.col-xs-3
+									.form-group
+										input.form-control(placeholder="Cuantity")
+						
+						#indoorManySpecies.hide
+
+					.form-group.hide#homeOutdoorZone
+						p.text-info Manage your familiar outdoor growing
+					.form-group.hide#outdoorZone
+						p.text-info You'll see that we can make for you
 
 			.modal-fotter
 				| prueba de texto

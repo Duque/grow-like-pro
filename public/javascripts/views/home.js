@@ -50,14 +50,21 @@ homeEvents.bind('growTypeChanges', function(el){
       	$('#outdoorZone').removeClass('hide');
         break;
   }
+});
 
-  //See growing details
-	homeEvents.bind('indoorSingleSpecies', function(el){
-		$('#indoorManySpecies').addClass('hide');
-		$('#indoorSingleSpecies').removeClass('hide');
-	});
-	homeEvents.bind('outdoorSingleSpecies', function(el){
-		$('#indoorSingleSpecies').addClass('hide');
-		$('#indoorManySpecies').removeClass('hide');
-	});
+//See growing details
+homeEvents.bind('indoorSingleSpecies', function(el){
+	$('#indoorManySpecies').addClass('hide');
+	$('#indoorSingleSpecies').removeClass('hide');
+});
+homeEvents.bind('outdoorSingleSpecies', function(el){
+	$('#indoorSingleSpecies').addClass('hide');
+	$('#indoorManySpecies').removeClass('hide');
+});
+
+//Open the inputs genetic names for many species in a group
+homeEvents.bind('indoorHowManySpecies', function(el){
+	var template = '<div class="form-group"><input type="text" placeholder="Genetic name" class="form-control"></div>';
+	//template = $('#indoorManySpeciesGeneticListTemplate').html();
+	$('#indoorManySpeciesGeneticList').append(template);
 });

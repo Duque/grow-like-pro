@@ -7,16 +7,20 @@ block content
 	//Nav
 	include ./modules/nav.jade
 	
-	//Alerts
-	//include ./modules/alerts.jade
+	
 		
 	//Content
 	#content
 	
 	.hide
-		#home
-			//Resumen de usuario
-			include ./modules/home/summary.jade
+		//Alerts
+		include ./modules/alerts.jade
+
+		//Resumen de usuario
+		include ./modules/home/summary.jade
+
+		//Cultivo activo
+		include ./modules/grow/grow.jade
 
 		#registro
 			h1 Registro

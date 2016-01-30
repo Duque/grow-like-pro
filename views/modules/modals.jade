@@ -9,23 +9,41 @@
 			.modal-body
 				form
 					.form-group
-						input.form-control#newGrowName(type="text", placeholder="Name", required)
+						.row
+							.col-xs-12
+								label(for="newGrowName") Name
+								input.form-control.col-xs-12#newGrowName(type="text", placeholder="Dinafem Moby Dick 2", required)
 					.form-group
-						select.form-control(onchange="homeEvents.trigger('growTypeChanges', $(this).val())")
-							option(value="na",autofocus) Choose a type
+						.row
+							.col-xs-6
+								label Start date cultivation
+								input.form-control#newGrowSelectDate(type="date")
+							.col-xs-6
+								.form-group
+									label Select one
+									.btn-group-justified(data-toggle="buttons")
+										label.btn.btn-warning#newGrowFromSeeds
+											| From seeds
+											input(type="radio",autocomplete="off",name="newGrowFrom")
+
+										label.btn.btn-success#newGrowFromCutting
+											| From cutting
+											input(type="radio",autocomplete="off",name="newGrowFrom")
+					.form-group
+						select.form-control#newGrowType(onchange="homeEvents.trigger('growTypeChanges', $(this).val())")
+							option(value="na",selected) Choose indoor or outdoor
 							option(value="indoor") Indoor	
-							option(value="homeOutdoor") Home outdoor
 							option(value="outdoor") Outdoor 
 					.form-group.hide#indoorZone
 						p.text-info 
 							|Manage your growings with species groups
 						.form-group
 							.btn-group-justified(data-toggle="buttons")
-								label.btn.btn-success(onclick="homeEvents.trigger('indoorSingleSpecies')")
+								label.btn.btn-primary(onclick="homeEvents.trigger('indoorSingleSpecies')")
 									| Single species
 									input(type="radio",autocomplete="off",name="indoorGroupType")
 
-								label.btn.btn-success(onclick="homeEvents.trigger('outdoorSingleSpecies')")
+								label.btn.btn-primary(onclick="homeEvents.trigger('outdoorSingleSpecies')")
 									| Many species
 									input(type="radio",autocomplete="off",name="outdoorGroupType")
 									
@@ -37,27 +55,23 @@
 								.col-xs-4
 									.form-group
 											input.form-control#indoorSingleSpeciesQuantity(placeholder="# Quantity")
+							.form-group.text-right
+											input.form-control.btn.btn-success#newSingleGrow(type="button",value="Create",onclick="homeEvents.trigger('createNewGrow', $(this))")
 						
 						#indoorManySpecies.hide
 							.row
 								.col-xs-12
 									.form-group.text-right
 										p
-											input.btn.btn-info(type="button",onclick="homeEvents.trigger('indoorHowManySpecies')", value="+ Add")
+											input.btn.btn-default(type="button",onclick="homeEvents.trigger('indoorHowManySpecies')", value="+ Add")
 
 								.col-xs-12
 									#indoorManySpeciesGeneticList
-										.form-group
-											input.form-control(type="text", placeholder="Genetic name")
-									.hide#indoorManySpeciesGeneticListTemplate
-										.form-group
-											input.form-control(type="text", placeholder="Genetic name")
+									
+									.form-group.text-right
+											input.form-control.btn.btn-success#newManyGrow(type="button",value="Create",onclick="homeEvents.trigger('createNewGrow', $(this))")
 
-
-					.form-group.hide#homeOutdoorZone
-						p.text-info Manage your familiar outdoor growing
 					.form-group.hide#outdoorZone
 						p.text-info You'll see that we can make for you
 
 			.modal-fotter
-				| prueba de texto

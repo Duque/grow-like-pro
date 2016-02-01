@@ -7,7 +7,7 @@
 					span(aria-hidden="true") &times;
 				h3 New grow
 			.modal-body
-				form
+				form#newGrowForm(autocomplete="on")
 					.form-group
 						.row
 							.col-xs-12
@@ -17,61 +17,56 @@
 						.row
 							.col-xs-6
 								label Start date cultivation
-								input.form-control#newGrowSelectDate(type="date")
+								input.form-control#newGrowSelectDate(type="date",required)
 							.col-xs-6
 								.form-group
 									label Select one
 									.btn-group-justified(data-toggle="buttons")
 										label.btn.btn-warning#newGrowFromSeeds
 											| From seeds
-											input(type="radio",autocomplete="off",name="newGrowFrom")
+											input(type="radio",autocomplete="off",name="newGrowFrom", required)
 
 										label.btn.btn-success#newGrowFromCutting
 											| From cutting
-											input(type="radio",autocomplete="off",name="newGrowFrom")
+											input(type="radio",autocomplete="off",name="newGrowFrom", required)
 					.form-group
-						select.form-control#newGrowType(onchange="homeEvents.trigger('growTypeChanges', $(this).val())")
+						select.form-control#newGrowType(required, onchange="homeEvents.trigger('growTypeChanges', $(this).val())")
 							option(value="na",selected) Choose indoor or outdoor
 							option(value="indoor") Indoor	
-							option(value="outdoor") Outdoor 
-					.form-group.hide#indoorZone
-						p.text-info 
-							|Manage your growings with species groups
-						.form-group
-							.btn-group-justified(data-toggle="buttons")
-								label.btn.btn-primary(onclick="homeEvents.trigger('indoorSingleSpecies')")
-									| Single species
-									input(type="radio",autocomplete="off",name="indoorGroupType")
-
-								label.btn.btn-primary(onclick="homeEvents.trigger('outdoorSingleSpecies')")
-									| Many species
-									input(type="radio",autocomplete="off",name="outdoorGroupType")
-									
-						#indoorSingleSpecies.hide
-							.row
-								.col-xs-8
-									.form-group
-										input.form-control#indoorSingleSpeciesName(placeholder="Genetic name")
-								.col-xs-4
-									.form-group
-											input.form-control#indoorSingleSpeciesQuantity(placeholder="# Quantity")
-							.form-group.text-right
-											input.form-control.btn.btn-success#newSingleGrow(type="button",value="Create",onclick="homeEvents.trigger('createNewGrow', $(this))")
-						
-						#indoorManySpecies.hide
-							.row
-								.col-xs-12
-									.form-group.text-right
-										p
-											input.btn.btn-default(type="button",onclick="homeEvents.trigger('indoorHowManySpecies')", value="+ Add")
-
-								.col-xs-12
-									#indoorManySpeciesGeneticList
-									
-									.form-group.text-right
-											input.form-control.btn.btn-success#newManyGrow(type="button",value="Create",onclick="homeEvents.trigger('createNewGrow', $(this))")
+							option(value="outdoor") Outdoor
 
 					.form-group.hide#outdoorZone
-						p.text-info You'll see that we can make for you
+						p.text-info If you want, save the grow coords.
+						p.text-warning We never publish or sell your info
+
+					.form-group
+						.row
+							.col-xs-12
+								input.btn.btn-default.pull-right(type="button",onclick="homeEvents.trigger('indoorHowManySpecies')", value="+ Add genetics")
+							.col-xs-12
+								p.text-info 
+									|Adds all genetics you want
+							
+						#speciesGeneticsList
+							.form-group
+								.row
+									.col-xs-8
+										label Genetics name
+											input.form-control.col-xs-12#jsGeneticsName1(placeholder="Dinafem Skunk 1", required)
+									.col-xs-4
+										label Genetics quantity
+											input.form-control#jsGeneticsQuantity1(placeholder="20", required)
+
+						
+					
+					
+					
+
+					
+
+					.row
+						.col-xs-12
+							.form-group.text-right
+								input.form-control.btn.btn-success#createNewGrow(type="submit",value="Create",onsubmit="homeEvents.trigger('createNewGrow', $(#newGrowForm)")
 
 			.modal-fotter

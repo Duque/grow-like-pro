@@ -51,26 +51,16 @@ homeEvents.bind('growTypeChanges', function(el){
   }
 });
 
-//See growing details
-homeEvents.bind('indoorSingleSpecies', function(el){
-	$('#indoorManySpecies').addClass('hide');
-	$('#indoorSingleSpecies').removeClass('hide');
-});
-homeEvents.bind('outdoorSingleSpecies', function(el){
-	$('#indoorSingleSpecies').addClass('hide');
-	$('#indoorManySpecies').removeClass('hide');
-});
-
 //Adding the inputs genetic names for many species in a group
-var contGeneticName = 0;
+var contGeneticsName = 1;
 homeEvents.bind('indoorHowManySpecies', function(el){
-	contGeneticName++;
-	template = ' <div class="form-group"><div class="row"><div class="col-xs-8"><input class="form-control" id="jsGeneticName' + contGeneticName + '" type="text" placeholder="Genetic name"></div><div class="col-xs-4"><input class="form-control" id="jsGeneticQuantity' + contGeneticName + '" type="text" placeholder="# Quantity"></div></div></div> '
-	$('#indoorManySpeciesGeneticList').append(template);	
+	contGeneticsName++;
+	template = ' <div class="form-group"><div class="row"><div class="col-xs-8"><input class="form-control" id="jsGeneticsName' + contGeneticsName + '" type="text" placeholder="Genetics name"></div><div class="col-xs-4"><input class="form-control" id="jsGeneticsQuantity' + contGeneticsName + '" type="text" placeholder="# Quantity"></div></div></div> '
+	$('#speciesGeneticsList').append(template);	
 });
 
 //Collect the form and call to create new grow
-homeEvents.bind('createNewGrow', function(el){
+homeEvents.bind('createNewGrow', function(form){
 	var newGrowName = $('#newGrowName').val();
 	var newGrowDate = $('#newGrowSelectDate').val();
 	var newGrowFromSeeds = $('#newGrowFromSeeds')
@@ -79,44 +69,32 @@ homeEvents.bind('createNewGrow', function(el){
 	//From seeds or cutting?
 	var newGrowFrom = '';
 	if(newGrowFromSeeds.hasClass('active')) {
-		alert('seed');
 		newGrowFrom = 'seeds';
 	} else {
-		alert('cutting');
 		newGrowFrom = 'cutting';
 	}
 	
 	var newGrowType = $('#newGrowType').val();
-	
-	//Single or Many species in a group
-	var idEl = el.attr('id');
-	var newGrowGeneticNames = '';
-	var newGrowGeneticQuantity = '';
-	
-	//Single species in a grow
-	if(idEl=='newSingleGrow') {
-		//Actions when create a single species group
-		newGrowGeneticNames = $('#indoorSingleSpeciesName').val();
-		newGrowGeneticQuantity = $('#indoorSingleSpeciesQuantity').val();
-	} else if (idEl=='newManyGrow'){ 
-		//Many species in a grow
-		var li = $('[id*=jsGeneticName]');
-		//alert(li.length);
-		for (i=1;i<=li.length;i++){
-			gN = $('#jsGeneticName' + i).val();
-			gQ = $('#jsGeneticQuantity' + i).val();
-			//alert(gN + ' - vuelta ' + i);
-			newGrowGeneticNames = newGrowGeneticNames + ', ' + gN;
-			newGrowGeneticQuantity = newGrowGeneticQuantity + ', ' + gQ;
-		}
+		
+	//Counting genetics
+	var li = $('[id*=jsGeneticsName]');
+	var newGrowGeneticsNames = '';
+	var newGrowGeneticsQuantity = '';
+	//alert(li.length);
+	for (i=1;i<=li.length;i++){
+		gN = $('#jsGeneticsName' + i).val();
+		gQ = $('#jsGeneticsQuantity' + i).val();
+		//alert(gN + ' - vuelta ' + i);
+		newGrowGeneticsNames = newGrowGeneticsNames + ', ' + gN;
+		newGrowGeneticsQuantity = newGrowGeneticsQuantity + ', ' + gQ;
 	}
-	
-	//Del "," in results
-	newGrowGeneticNames = newGrowGeneticNames.substring(1);
-	newGrowGeneticQuantity = newGrowGeneticQuantity.substring(1);
 
-	alert('Name: ' + newGrowName + ', Date: ' + newGrowDate + ', From: ' + newGrowFrom + ', Type: ' + newGrowType + ', Genetics: ' +  newGrowGeneticNames + ', Quantity: ' + newGrowGeneticQuantity);
+	//Del "," in results
+	newGrowGeneticsNames = newGrowGeneticsNames.substring(1);
+	newGrowGeneticsQuantity = newGrowGeneticsQuantity.substring(1);
+
+	//alert('Name: ' + newGrowName + ', Date: ' + newGrowDate + ', From: ' + newGrowFrom + ', Type: ' + newGrowType + ', Genetics: ' +  newGrowGeneticsNames + ', Quantity: ' + newGrowGeneticsQuantity);
 	
-	//activeGrow.render();
-	//$('#newGrowModal').modal("hide");  
+	activeGrow.render();
+	$('#newGrowModal').modal("hide");  
 });

@@ -1,72 +1,11 @@
 //New grow
-.modal.fade#newGrowModal(tabindex="-1", role="dialog",aria-labelledby="newGrowModalLabel")
+.modal.fade#Modalxxxxx(tabindex="-1", role="dialog",aria-labelledby="newGrowModalLabel")
 	.modal-dialog(role="document")
 		.modal-content
 			.modal-header
 				button.close(type="button", data-dismiss="modal", aria-label="Close")
 					span(aria-hidden="true") &times;
-				h3 New grow
+				h3 Modal title
 			.modal-body
-				form#newGrowForm(autocomplete="on")
-					.form-group
-						.row
-							.col-xs-12
-								label(for="newGrowName") Name
-								input.form-control.col-xs-12#newGrowName(type="text", placeholder="Dinafem Moby Dick 2", required)
-					.form-group
-						.row
-							.col-xs-6
-								label Start date cultivation
-								input.form-control#newGrowSelectDate(type="date",required)
-							.col-xs-6
-								.form-group
-									label Select one
-									.btn-group-justified(data-toggle="buttons")
-										label.btn.btn-warning#newGrowFromSeeds
-											| From seeds
-											input(type="radio",autocomplete="off",name="newGrowFrom", required)
-
-										label.btn.btn-success#newGrowFromCutting
-											| From cutting
-											input(type="radio",autocomplete="off",name="newGrowFrom", required)
-					.form-group
-						select.form-control#newGrowType(required, onchange="homeEvents.trigger('growTypeChanges', $(this).val())")
-							option(value="na",selected) Choose indoor or outdoor
-							option(value="indoor") Indoor	
-							option(value="outdoor") Outdoor
-
-					.form-group.hide#outdoorZone
-						p.text-info If you want, save the grow coords.
-						p.text-warning We never publish or sell your info
-
-					.form-group
-						.row
-							.col-xs-12
-								input.btn.btn-default.pull-right(type="button",onclick="homeEvents.trigger('indoorHowManySpecies')", value="+ Add genetics")
-							.col-xs-12
-								p.text-info 
-									|Adds all genetics you want
-							
-						#speciesGeneticsList
-							.form-group
-								.row
-									.col-xs-8
-										label Genetics name
-											input.form-control.col-xs-12#jsGeneticsName1(placeholder="Dinafem Skunk 1", required)
-									.col-xs-4
-										label Genetics quantity
-											input.form-control#jsGeneticsQuantity1(placeholder="20", required)
-
-						
-					
-					
-					
-
-					
-
-					.row
-						.col-xs-12
-							.form-group.text-right
-								input.form-control.btn.btn-success#createNewGrow(type="submit",value="Create",onsubmit="homeEvents.trigger('createNewGrow', $(#newGrowForm)")
 
 			.modal-fotter

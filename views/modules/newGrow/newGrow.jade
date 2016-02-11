@@ -1,0 +1,83 @@
+#newGrow
+	.row
+		.col-xs-6
+			h2 New Crop
+		.col-xs-6.text-right
+			.btn-group(role="group")
+				a.btn.btn-default(href="#newGrow")
+					span.glyphicon.glyphicon-plus-sign(aria-hidden="true") 
+					| &nbsp; Cancelar
+	.row
+		.col-xs-12
+			form#newGrowForm(autocomplete="on",onsubmit="newGrowEvents.trigger('createNewGrow', $(this)); return false;", method="post")
+				.form-group
+					.row
+						.col-xs-12
+							label(for="newGrowName") Name
+							input.form-control.col-xs-12#newGrowName(type="text", placeholder="Dinafem Moby Dick 2", , name="newGrowName")
+				.form-group
+					.row
+						.col-xs-6
+							label Start date cultivation
+							input.form-control#newGrowSelectDate(type="date", name="newGrowSelectDate",)
+						.col-xs-6
+							.form-group
+								label Select from
+								.btn-group-justified(data-toggle="buttons")
+									label.btn.btn-warning#newGrowFromSeeds
+										| Seeds
+										input(type="radio",autocomplete="off",name="newGrowFrom", value="seeds", )
+
+									label.btn.btn-success#newGrowFromCutting
+										| Cutting
+										input(type="radio",autocomplete="off",name="newGrowFrom", value="cutting", )
+				.form-group
+					label Indoor or outdoor?
+					select.form-control#newGrowType(, onchange="newGrowEvents.trigger('growTypeChanges', $(this).val())", name="newGrowType")
+						option(value="indoor",selected) Indoor	
+						option(value="outdoor") Outdoor
+
+				.hide#outdoorZone
+					.row.feedBackZone.text-info
+						.col-xs-12
+							h4 Thanks for send your feed back
+						.col-xs-12
+							.form-group
+								p
+									| Wish you could save the coordinates of your outdoor cultivation?  &nbsp; 
+								p
+									label(for="newGrowOutdoorCoordsFeedBack") Yes &nbsp;
+									input(type="radio" name="newGrowOutdoorCoordsFeedBack" value="yes")
+									label(for="newGrowOutdoorCoordsFeedBack") &nbsp; No &nbsp;
+									input(type="radio" name="newGrowOutdoorCoordsFeedBack" value="No")
+									
+
+				.form-group
+					.row
+						.col-xs-12
+							p.text-info.text-right 
+								|Adds all genetics you want
+						.col-xs-12
+							input.btn.btn-default.pull-right(type="button",onclick="newGrowEvents.trigger('indoorHowManySpecies')", value="+ Add genetics")
+						
+						
+				#speciesGeneticsList
+					.row
+						.col-xs-8
+							.form-group
+								label(for="jsGeneticsName1") Genetics name
+								input.form-control.col-xs-12#jsGeneticsName1(placeholder="Dinafem Skunk 1", , name="jsGeneticsName1")
+						.col-xs-4
+							.form-group
+								label Genetics quantity
+								.row
+									.col-xs-6
+										input.form-control.col-xs-6#jsGeneticsQuantity1(placeholder="20", , name="jsGeneticsQuantity1")
+									.col-xs-6
+										button.form-control.btn.btn-default#deleteGeneticsNewGrow(onclick="newGrowEvents.trigger('deleteGeneticsRow', $(this))",aria-label="Left Align")
+											span.glyphicon.glyphicon-trash(aria-hidden="true")						
+
+				.row
+					.col-xs-12
+						.form-group.text-right
+							input.form-control.btn.btn-success#createNewGrow(type="submit",value="Create")

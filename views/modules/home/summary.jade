@@ -2,12 +2,12 @@
 #home
 	.row
 		.col-xs-6
-			h2 Active growings
+			h2 Active cropings
 		.col-xs-6.text-right
 			.btn-group(role="group")
-				button.btn.btn-default(onclick="homeEvents.trigger('newGrowModal')")
+				a.btn.btn-success(href="#newGrow")
 					span.glyphicon.glyphicon-plus-sign(aria-hidden="true") 
-					| &nbsp; New grow
+					| &nbsp; New Crop
 	.row
 		- var cultivosActivos = 0
 		while cultivosActivos < 4

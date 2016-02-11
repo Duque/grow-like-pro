@@ -1,7 +1,9 @@
 Routes = Backbone.Router.extend({
 	routes: {
 		""																							:"index",
-		"activeGrow"																		:"activeGrow",
+		"/"																							:"index",
+		"activeCrop"																		:"activeCrop",
+		"newGrow"																		  	:"newGrow",
 	},
 
 	index: function(){
@@ -9,9 +11,14 @@ Routes = Backbone.Router.extend({
 		home.render();
 	},
 	
-	activeGrow: function(){
+	activeCrop: function(){
 		$('.modal').modal("hide");
-		activeGrow.render();
+		activeCropView.render();
+	},
+
+	newGrow: function(){
+		$('.modal').modal("hide");
+		newGrow.render();
 	},
 
 });
